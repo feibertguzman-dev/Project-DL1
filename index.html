@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Clasificación Convolucional | Deep Learning UCN</title>
+  <meta name="description" content="Proyecto de Visión por Computadora y Deep Learning con TensorFlow, Keras y Streamlit. Reconocimiento de gestos manuales en tiempo real. Investigador: Feibert Guzmán.">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="#hero" class="nav-brand">
+        <div class="brand-icon-wrap">
+          <svg class="svg-icon" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="12" r="3"/><line x1="8.6" y1="7.3" x2="15.4" y2="10.7"/><line x1="8.6" y1="16.7" x2="15.4" y2="13.3"/></svg>
+        </div>
+        <span>Vision Deep Learning</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#gestos">Clases Morfológicas</a></li>
+        <li><a href="#simulador">Simulador In-Browser</a></li>
+        <li><a href="#arquitectura">Arquitectura en Capas</a></li>
+        <li><a href="#pipeline">Pipeline Tensorial</a></li>
+        <li>
+          <a href="#despliegue" class="btn-nav">
+            <svg class="svg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Ejecutar App</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section id="hero" class="hero-section">
+      <div class="container">
+        <div class="hero-pill">
+          <span class="dot"></span>
+          <span>Proyecto de Investigación #1 • Deep Learning 2026</span>
+        </div>
+        <h1 class="hero-title">
+          Clasificación de Gestos Manuales mediante <span class="gradient-text">Redes Convolucionales</span>
+        </h1>
+        <p class="hero-desc">
+          Extracción de patrones espaciales y visión artificial con TensorFlow/Keras.
+          Sistema interactivo desacoplado en Streamlit con serie competitiva frente a agente algorítmico.
+        </p>
+        <div class="hero-actions">
+          <a href="#despliegue" class="btn btn-primary">
+            <svg class="svg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <span>Lanzar Streamlit</span>
+          </a>
+          <a href="#simulador" class="btn btn-secondary">
+            <svg class="svg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            <span>Probar Simulador</span>
+          </a>
+        </div>
+
+        <!-- 3 Core Gestures Cards with Doctoral SVGs -->
+        <div id="gestos" class="gestures-display">
+          <article class="gesture-card">
+            <div class="gesture-icon-wrap">
+              <svg class="svg-gesture-hero" viewBox="0 0 64 64" fill="none">
+                <path d="M22 28V20C22 17.79 23.79 16 26 16C28.21 16 30 17.79 30 20V24M30 20C30 17.79 31.79 16 34 16C36.21 16 38 17.79 38 20V24M38 22C38 19.79 39.79 18 42 18C44.21 18 46 19.79 46 22V32C46 41.94 39.94 48 30 48C20.06 48 16 41.94 16 36V28C16 25.79 17.79 24 20 24C22.21 24 24 25.79 24 28" stroke="#38BDF8" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="rgba(56, 189, 248, 0.12)"/>
+                <path d="M24 34H36M24 40H34" stroke="#93C5FD" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="gesture-name">Piedra (Clase 0)</h3>
+            <div class="gesture-rule">Neutraliza a Tijera • Neutralizado por Papel</div>
+            <p class="gesture-desc">Morfología compacta con dedos en flexión total. El modelo detecta bordes cerrados y volumen proximal.</p>
+          </article>
+
+          <article class="gesture-card">
+            <div class="gesture-icon-wrap">
+              <svg class="svg-gesture-hero" viewBox="0 0 64 64" fill="none">
+                <path d="M20 28V14C20 12.34 21.34 11 23 11C24.66 11 26 12.34 26 14V26M26 14C26 12.34 27.34 11 29 11C30.66 11 32 12.34 32 14V26M32 16C32 14.34 33.34 13 35 13C36.66 13 38 14.34 38 16V26M38 19C38 17.34 39.34 16 41 16C42.66 16 44 17.34 44 19V34C44 43 38 49 29 49C20 49 16 43 16 36V28C16 26.34 17.34 25 19 25C20.66 25 22 26.34 22 28" stroke="#34D399" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="rgba(52, 211, 153, 0.12)"/>
+                <circle cx="29" cy="38" r="3" fill="#6EE7B7"/>
+              </svg>
+            </div>
+            <h3 class="gesture-name">Papel (Clase 1)</h3>
+            <div class="gesture-rule">Neutraliza a Piedra • Neutralizado por Tijera</div>
+            <p class="gesture-desc">Morfología extendida con palma frontal visible y los cinco dígitos en abducción moderada.</p>
+          </article>
+
+          <article class="gesture-card">
+            <div class="gesture-icon-wrap">
+              <svg class="svg-gesture-hero" viewBox="0 0 64 64" fill="none">
+                <path d="M26 12L34 28M38 12L30 28" stroke="#C084FC" stroke-width="4" stroke-linecap="round"/>
+                <circle cx="24" cy="42" r="7" stroke="#C084FC" stroke-width="3.5" fill="rgba(192, 132, 252, 0.12)"/>
+                <circle cx="40" cy="42" r="7" stroke="#F472B6" stroke-width="3.5" fill="rgba(244, 114, 182, 0.12)"/>
+                <circle cx="32" cy="30" r="3" fill="#F472B6"/>
+              </svg>
+            </div>
+            <h3 class="gesture-name">Tijera (Clase 2)</h3>
+            <div class="gesture-rule">Neutraliza a Papel • Neutralizado por Piedra</div>
+            <p class="gesture-desc">Dígitos índice y medio en extensión formando bifurcación angular, con el pulgar bloqueando el resto de falanges.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Simulator Section -->
+    <section id="simulador" class="simulator-section">
+      <div class="container">
+        <div class="sim-box">
+          <div class="section-head">
+            <div class="section-tag">Validación Algorítmica</div>
+            <h2 class="section-title">Simulador de Duelo en Tiempo Real</h2>
+            <p class="section-desc">Seleccione una clase para evaluar la resolución estocástica del adversario algorítmico.</p>
+          </div>
+
+          <div class="sim-arena">
+            <div class="fighter-card">
+              <div class="fighter-label">Jugador</div>
+              <div id="playerGesture" class="fighter-gesture-box">
+                <svg class="svg-gesture" viewBox="0 0 64 64" fill="none"><circle cx="32" cy="32" r="28" stroke="rgba(255,255,255,0.2)" stroke-width="3" stroke-dasharray="6 6"/><text x="32" y="38" font-family="'Outfit', sans-serif" font-size="22" font-weight="700" fill="#64748B" text-anchor="middle">?</text></svg>
+              </div>
+              <div id="playerName" class="fighter-choice-name">Seleccionar</div>
+            </div>
+
+            <div class="sim-vs">
+              <svg viewBox="0 0 48 48" fill="none" style="width:48px;height:48px;"><circle cx="24" cy="24" r="22" stroke="rgba(255,255,255,0.15)" stroke-width="2" fill="rgba(15,23,42,0.8)"/><text x="24" y="29" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="800" fill="#CBD5E1" text-anchor="middle">VS</text></svg>
+            </div>
+
+            <div class="fighter-card">
+              <div class="fighter-label">Máquina AI</div>
+              <div id="aiGesture" class="fighter-gesture-box">
+                <svg class="svg-gesture" viewBox="0 0 64 64" fill="none"><rect x="14" y="24" width="36" height="24" rx="6" stroke="#94A3B8" stroke-width="3" fill="rgba(255,255,255,0.05)"/><circle cx="24" cy="36" r="3" fill="#60A5FA"/><circle cx="40" cy="36" r="3" fill="#60A5FA"/><line x1="32" y1="12" x2="32" y2="24" stroke="#94A3B8" stroke-width="3"/><circle cx="32" cy="10" r="3" fill="#F472B6"/></svg>
+              </div>
+              <div id="aiName" class="fighter-choice-name">En espera</div>
+            </div>
+          </div>
+
+          <div class="sim-controls">
+            <button type="button" class="sim-choice-btn" data-choice="Piedra">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/></svg>
+              <span>Piedra</span>
+            </button>
+            <button type="button" class="sim-choice-btn" data-choice="Papel">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+              <span>Papel</span>
+            </button>
+            <button type="button" class="sim-choice-btn" data-choice="Tijera">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+              <span>Tijera</span>
+            </button>
+          </div>
+
+          <div id="simResult" class="sim-result-badge"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="arquitectura" style="padding: 4.5rem 0;">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-tag">Ingeniería de Software</div>
+          <h2 class="section-title">Arquitectura por Capas Desacopladas</h2>
+          <p class="section-desc">Estructuración modular que asegura reproducibilidad experimental y escalabilidad.</p>
+        </div>
+
+        <div class="arch-grid">
+          <div class="arch-card">
+            <span class="arch-badge model">Capa 1: Deep Learning</span>
+            <h3 class="arch-title">Model & Classifier</h3>
+            <ul class="arch-list">
+              <li><code>src/model/classifier.py</code></li>
+              <li>• Inferencia tensorial Keras / TensorFlow sin dependencias de GUI.</li>
+              <li>• Normalización de tensores <code>(224, 224, 3)</code> al rango <code>[-1.0, 1.0]</code>.</li>
+              <li>• Compatibilidad probada en <code>tf_keras</code> y <code>tensorflow.keras</code>.</li>
+            </ul>
+          </div>
+
+          <div class="arch-card">
+            <span class="arch-badge game">Capa 2: Dominio Formal</span>
+            <h3 class="arch-title">Game Engine</h3>
+            <ul class="arch-list">
+              <li><code>src/game/engine.py</code></li>
+              <li>• Motor determinista de reglas cíclicas del juego.</li>
+              <li>• Gestión de estado para series a 3 aciertos con victoria acumulada.</li>
+              <li>• Historial estructurado e inmutable de rondas.</li>
+            </ul>
+          </div>
+
+          <div class="arch-card">
+            <span class="arch-badge ui">Capa 3: Presentación</span>
+            <h3 class="arch-title">Streamlit & Landing</h3>
+            <ul class="arch-list">
+              <li><code>app.py</code> & <code>src/ui/components.py</code></li>
+              <li>• Adquisición por cámara web en tiempo real.</li>
+              <li>• Marcador reactivo con soporte para métricas de confianza.</li>
+              <li>• Landing page moderna desacoplada en <code>index.html</code>.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preprocessing Pipeline Section -->
+    <section id="pipeline" style="padding: 2.5rem 0 4.5rem 0;">
+      <div class="container">
+        <div class="section-head">
+          <div class="section-tag">Flujo de Datos</div>
+          <h2 class="section-title">Pipeline Tensorial de Inferencia</h2>
+          <p class="section-desc">Transformación desde la captura de fotograma hasta la función de densidad Softmax.</p>
+        </div>
+
+        <div class="pipeline-steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-title">Captura Visual</div>
+            <div class="step-desc">Frame stream mediante WebCam en Streamlit o subida de archivo.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-title">Ajuste Espacial</div>
+            <div class="step-desc">Recorte centrado y redimensión a 224×224 píxeles en espacio RGB.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-title">Normalización</div>
+            <div class="step-desc">Escalamiento continuo: <code>(X / 127.5) - 1.0</code> en rango [-1, 1].</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-title">Convolución Keras</div>
+            <div class="step-desc">Feedforward a través de las capas y cálculo de logits Softmax.</div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-title">Duelo de Juego</div>
+            <div class="step-desc">Comparación contra el movimiento de la máquina y actualización de puntuación.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Run & Deployment Section -->
+    <section id="despliegue" style="padding: 3.5rem 0 5.5rem 0;">
+      <div class="container" style="max-width: 850px;">
+        <div class="sim-box" style="text-align: left;">
+          <div class="section-tag" style="text-align: center;">Despliegue y Ejecución</div>
+          <h2 class="section-title" style="text-align: center;">Protocolo de Inicio Rápido</h2>
+          <p class="section-desc" style="text-align: center; margin-bottom: 2rem;">
+            Ejecución local mediante entorno virtual o despliegue en Streamlit Community Cloud.
+          </p>
+
+          <div style="background: rgba(10, 14, 23, 0.9); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem; font-family: var(--font-mono); font-size: 0.9rem; color: #a5b4fc;">
+            <div style="color: #6b7280; margin-bottom: 0.4rem;"># 1. Clonar e instalar dependencias</div>
+            <div style="color: #f3f4f6; margin-bottom: 0.8rem;">git clone https://github.com/feibertguzman-dev/Project-DL1.git</div>
+            <div style="color: #f3f4f6; margin-bottom: 1rem;">pip install -r requirements.txt</div>
+            
+            <div style="color: #6b7280; margin-bottom: 0.4rem;"># 2. Iniciar la aplicación interactiva de Streamlit</div>
+            <div style="color: #38bdf8; font-weight: 600;">streamlit run app.py</div>
+          </div>
+
+          <div style="text-align: center;">
+            <button onclick="copyRunCommand()" class="btn btn-primary" style="margin-right: 0.8rem;">
+              <svg class="svg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copiar Comando</span>
+            </button>
+            <a href="https://github.com/feibertguzman-dev/Project-DL1.git" target="_blank" rel="noopener" class="btn btn-secondary">
+              <svg class="svg-btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+              <span>Repositorio GitHub</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="#hero">Inicio</a>
+        <a href="#gestos">Clases</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="https://github.com/feibertguzman-dev/Project-DL1.git" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p>
+        Proyecto de Deep Learning • Universidad Católica del Norte (UCN) • 2026<br>
+        Investigador Principal: Feibert Alirio Guzmán Pérez<br>
+        TensorFlow 2.x • Keras • Streamlit • Clean Architecture
+      </p>
+    </div>
+  </footer>
+
+  <!-- Decoupled JavaScript -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
