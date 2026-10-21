@@ -8,6 +8,12 @@
 [![License MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](LICENSE)
 
 ---
+| N.º | Entregable | Enlace |
+|---:|---|---|
+| 1 | Landing Page del proyecto | [Ver Landing Page](https://feibertguzman-dev.github.io/Project-DL1/) |
+| 2 | Documento escrito del proyecto Deep Learning | [Ver documento escrito](https://github.com/feibertguzman-dev/Project-DL1/blob/main/Plantilla_Profesional_Proyecto_Deep_Learning_2026.docx) |
+| 3 | Aplicación desplegada en Streamlit | [Acceder a la aplicación](https://project-dl1.streamlit.app/) |
+---
 
 ## 1. Descripción del Proyecto
 
